@@ -1,0 +1,104 @@
+.maki-spoilers {
+  max-width: 540px;
+  margin: 20px auto;
+  line-height: 1.5;
+}
+
+.maki-spoilers * {
+  box-sizing: border-box;
+}
+
+.maki-spoiler {
+  border: 1px solid currentColor;
+  border-radius: 3px;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+
+.maki-spoiler input {
+  display: none;
+}
+
+.maki-spoiler label {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 13px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 11px;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.maki-spoiler label:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #640000, #a00000cc, #d2191988, transparent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .45s;
+  z-index: -1;
+}
+
+.maki-spoiler label:hover:before {
+  transform: scaleX(1);
+}
+
+.maki-spoiler label:hover {
+  color: white;
+}
+
+.maki-spoiler label:after {
+  content: "+";
+  font-size: 16px;
+}
+
+.maki-spoiler input:checked + label:after {
+  content: "−";
+}
+
+.maki-spoiler .contenido {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows .3s;
+}
+
+.maki-spoiler .interior {
+  overflow: hidden;
+  min-height: 0;
+  padding: 0 13px;
+  transition: padding .3s;
+}
+
+.maki-spoiler input:checked ~ .contenido {
+  grid-template-rows: 1fr;
+}
+
+.maki-spoiler input:checked ~ .contenido .interior {
+  padding: 12px 13px 5px;
+}
+
+.maki-spoiler a {
+  display: block;
+  margin-bottom: 8px;
+  text-decoration: none;
+  text-align: justify;
+  overflow-wrap: anywhere;
+}
+
+.maki-spoiler a:hover {
+  opacity: .6;
+}
+
+.maki-spoiler p {
+  margin: 0 0 8px;
+}
+
+@media (max-width: 480px) {
+  .maki-spoiler label {
+    padding: 9px 10px;
+  }
+}
